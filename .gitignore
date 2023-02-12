@@ -1,6 +1,6 @@
 keys
 keys/*
 
-
+current-deployments-state.json
 initial-setup.sh
 linix-vm-keys-gen.sh

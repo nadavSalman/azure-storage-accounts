@@ -23,7 +23,8 @@
   },
   "functions": [],
   "variables": {
-    "linked-template-linux-server": "https://raw.githubusercontent.com/nadavSalman/azure-storage-accounts/main/armTemplatets/linuxServer/linuxServer.json",
+    "linkedTemplateLinuxServer": "https://raw.githubusercontent.com/nadavSalman/azure-storage-accounts/main/armTemplatets/linuxServer/linuxServer.json",
+    "linkedTemplateStorageAccount": "https://raw.githubusercontent.com/nadavSalman/azure-storage-accounts/main/armTemplatets/storageAccount/storageAccount.json",
     "publicKeyPath": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]"
   },
   "resources": [
@@ -34,7 +35,7 @@
       "properties": {
         "mode": "Incremental",
         "templateLink": {
-          "uri": "[variables('linked-template-linux-server')]",
+          "uri": "[variables('linkedTemplateLinuxServer')]",
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
@@ -42,6 +43,21 @@
           "adminUsername": {"value": "[parameters('adminUsername')]"},
           "adminPublicKey": {"value": "[parameters('adminPublicKey')]"},
           "publicKeyPath": {"value": "[variables('publicKeyPath')]"}
+        }
+      }
+    },
+    {
+      "name" : "linuxServer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+         "mode": "Incremental",
+          "templateLink": {
+            "uri": "[variables('linkedTemplateStorageAccount')]",
+            "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "storagePrefix": {"value": "[parameters('projectName')]"}
         }
       }
     }
