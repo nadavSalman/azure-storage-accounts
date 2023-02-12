@@ -15,6 +15,10 @@
         "description": "Specifies the location for all resources."
       }
     },
+    "publicKeypath": {
+       "type": "string",
+        "defaultValue": "../../keys/id_rsa.pub"
+    },
     "adminUsername": {
       "type": "string",
       "defaultValue": "nadav",

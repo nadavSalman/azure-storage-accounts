@@ -11,9 +11,6 @@
         "metadata": {
           "description": "Specifies a name for generating resource names."
         }
-      },
-      "linuxServerTemplatePath": {
-        "type": "string"
       }
     },
     "functions": [],
@@ -26,7 +23,7 @@
         "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "relativePath": "linuxServer.json"
+            "uri": "https://github.com/nadavSalman/azure-storage-accounts/blob/0522e0db7f68e42c9689cdfbe916d0e08b93e7c7/armTemplatets/linuxServer/linuxServer.json"
           },
           "parameters": {
             "projectName": {
@@ -41,3 +38,5 @@
     ],
     "outputs": {}
   }
+
+  
