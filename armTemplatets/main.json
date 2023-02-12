@@ -1,9 +1,55 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "projectName": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies a name for generating resource names."
+      }
+    },
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies a username for the Virtual Machine."
+      }
+    },
+    "adminPublicKey": {
+      "type": "string",
+      "metadata": {
+        "description": "Specifies the SSH rsa public key file as a string. Use \"ssh-keygen -t rsa -b 2048\" to generate your SSH key pairs."
+      }
+    }
+  },
   "functions": [],
-  "variables": {},
-  "resources": [],
-  "outputs": {}
+  "variables": {
+    "linked-template-linux-server": "https://raw.githubusercontent.com/nadavSalman/azure-storage-accounts/main/armTemplatets/linuxServer/linuxServer.json",
+    "publicKeyPath": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]"
+  },
+  "resources": [
+    {
+      "name" : "linuxServer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "uri": "[variables('linked-template-linux-server')]",
+          "contentVersion": "1.0.0.0"
+        },
+        "parameters": {
+          "projectName": {"value": "[parameters('projectName')]"},
+          "adminUsername": {"value": "[parameters('adminUsername')]"},
+          "adminPublicKey": {"value": "[parameters('adminPublicKey')]"},
+          "publicKeyPath": {"value": "[variables('publicKeyPath')]"}
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "PublicKeyPath": {
+      "type": "string",
+      "value": "[variables('publicKeyPath')]"
+    }
+  }
 }

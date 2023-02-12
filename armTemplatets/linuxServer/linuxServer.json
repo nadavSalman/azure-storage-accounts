@@ -21,6 +21,9 @@
         "description": "Specifies a username for the Virtual Machine."
       }
     },
+    "publicKeyPath": {
+      "type": "string"
+    },
     "adminPublicKey": {
       "type": "string",
       "metadata": {
@@ -181,7 +184,7 @@
             "ssh": {
               "publicKeys": [
                 {
-                  "path": "[concat('/home/', parameters('adminUsername'), '/.ssh/authorized_keys')]",
+                  "path": "[parameters('publicKeyPath')]",
                   "keyData": "[parameters('adminPublicKey')]"
                 }
               ]
