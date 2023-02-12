@@ -1,42 +1,9 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-      "parameters": {
-        "publicKeypath": {
-        "type": "string",
-        "defaultValue": "../../keys/id_rsa.pub"
-      },
-      "projectName": {
-        "type": "string",
-        "metadata": {
-          "description": "Specifies a name for generating resource names."
-        }
-      }
-    },
-    "functions": [],
-    "variables": {},
-    "resources": [
-      {
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2021-04-01",
-        "name": "linuxServer",
-        "properties": {
-          "mode": "Incremental",
-          "templateLink": {
-            "uri": "https://github.com/nadavSalman/azure-storage-accounts/blob/0522e0db7f68e42c9689cdfbe916d0e08b93e7c7/armTemplatets/linuxServer/linuxServer.json"
-          },
-          "parameters": {
-            "projectName": {
-            "value": "[parameters('projectName')]"
-            },
-            "location": {
-              "value": "[parameters('publicKeypath')]"
-            }
-          }
-        }
-      }
-    ],
-    "outputs": {}
-  }
-
-  
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [],
+  "outputs": {}
+}
