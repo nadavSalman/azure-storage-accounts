@@ -19,6 +19,9 @@
       "metadata": {
         "description": "Specifies the SSH rsa public key file as a string. Use \"ssh-keygen -t rsa -b 2048\" to generate your SSH key pairs."
       }
+    },
+    "storagePrefix":{
+        "type": "string"
     }
   },
   "functions": [],
@@ -47,7 +50,7 @@
       }
     },
     {
-      "name" : "linuxServer",
+      "name" : "StorageAccount",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2019-10-01",
       "properties": {
@@ -57,7 +60,7 @@
             "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "storagePrefix": {"value": "[parameters('projectName')]"}
+          "storagePrefix": {"value": "[parameters('storagePrefix')]"}
         }
       }
     }
