@@ -50,7 +50,11 @@
       }
     },
     {
-      "name" : "StorageAccount",
+      "name" : "[concat('StorageAccount',copyIndex())]",
+      "copy": {
+          "name": "storageCopy",
+          "count": 2
+      },
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2019-10-01",
       "properties": {
@@ -60,7 +64,7 @@
             "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          "storagePrefix": {"value": "[parameters('storagePrefix')]"}
+          "storagePrefix": {"value": "[format('{0}{1}',parameters('storagePrefix'),copyIndex())]"}
         }
       }
     }

@@ -1,5 +1,6 @@
 # azure-storage-accounts
 
+![Alt text](screenShot/architecture.png?raw=true "Title")
 
 
 
