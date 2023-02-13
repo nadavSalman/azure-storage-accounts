@@ -7,7 +7,9 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: m1
+  demands:
+  - Agent.Version -equals 2.217.2
 
 steps:
 - script: echo Hello, world!
