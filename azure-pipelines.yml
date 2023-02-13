@@ -7,8 +7,7 @@ trigger:
 - main
 
 pool:
-  name: m1
-  demands: SpecialSoftware # exists check for SpecialSoftware
+  name: Default
 
 steps:
 - script: echo Hello, world!
