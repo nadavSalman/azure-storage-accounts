@@ -39,7 +39,7 @@ jobs:
         --resource-group NadavHomework \
         --template-file main.json \
         --parameters parameters.json   \
-        --parameters adminPublicKey=$(ADMINPUBLICKEY)
+        --parameters adminPublicKey="$(ADMINPUBLICKEY)"
       displayName: 'Deploy Resource from ARM Templates'
 
     
