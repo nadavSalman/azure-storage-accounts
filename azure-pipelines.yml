@@ -4,8 +4,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+# trigger:
+# - main
 
 pool:
   name: Default
@@ -14,12 +14,14 @@ pool:
 jobs:
   - job: Deploy_Infrastructure
     steps:
-    - script: az login
-      displayName: 'az login'
+    - script: az account list  --all
+      displayName: 'az account list'
     
     - script: |
         if [ $(az group exists --name $(RESOURCEGROUPNAME)) = false ]; then
-            az group create --name $(RESOURCEGROUPNAME) --location $LOCATION
+            az group create \
+              --name NadavHomework \
+              --location "Central US"
         fi
       displayName: 'Check Resource Group Existence'
 
