@@ -30,6 +30,7 @@ jobs:
 
     - script: |
         pwd
+        ll
       displayName: 'Deploy Resource from ARM Templates'
 
 
