@@ -29,8 +29,7 @@ jobs:
       displayName: 'Check Resource Group Existence'
 
     - script: |
-        pwd
-        ls -la
+        cd armTemplatets
       displayName: 'Deploy Resource from ARM Templates'
 
 
