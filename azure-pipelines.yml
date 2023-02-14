@@ -21,4 +21,5 @@ jobs:
         if [ $(az group exists --name $(RESOURCEGROUPNAME)) = false ]; then
             az group create --name $(RESOURCEGROUPNAME) --location $LOCATION
         fi
+      displayName: 'Check Resource Group Existence'
 
