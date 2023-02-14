@@ -23,6 +23,7 @@ jobs:
             az group create \
               --name NadavHomework \
               --location "Central US"
+        else
+          echo "Resource Group Exists."
         fi
       displayName: 'Check Resource Group Existence'
-
