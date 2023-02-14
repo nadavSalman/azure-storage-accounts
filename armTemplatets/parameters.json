@@ -10,6 +10,9 @@
         },
         "storagePrefix":{
             "value": "sa"
+        },
+        "storageAccountAmount": {
+            "value": 2
         }
     }
 }
