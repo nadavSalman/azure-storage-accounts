@@ -14,8 +14,8 @@ pool:
 jobs:
   - job: Deploy_Infrastructure
     steps:
-    - script: az login
-      displayName: 'az login'
+    - script: echo
+      displayName: 'echo arm deployment'
     - task: AzureCLI@2
       inputs:
         scriptType: bash
