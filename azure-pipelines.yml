@@ -19,6 +19,7 @@ jobs:
     
     - script: |
         if [ $(az group exists --name $(RESOURCEGROUPNAME)) = false ]; then
+            echo "Crreating Resource Group."
             az group create \
               --name NadavHomework \
               --location "Central US"
