@@ -29,8 +29,22 @@ jobs:
       displayName: 'Check Resource Group Existence'
 
     - script: |
+        echo "Testing..."
+      displayName: 'Test ARM Template'
+
+    - script: |
         cd armTemplatets
+        az deployment group create \
+        --name DeployInfrastructure \
+        --resource-group NadavHomework \
+        --template-file main.json \
+        --parameters parameters.json   \
+        --parameters adminPublicKey=$(RESOURCEGROUPNAME)
       displayName: 'Deploy Resource from ARM Templates'
+
+    
+
+
 
 
 
