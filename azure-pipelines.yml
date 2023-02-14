@@ -4,8 +4,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-# trigger:
-# - main
+trigger:
+- main
 
 pool:
   name: Default
@@ -27,3 +27,10 @@ jobs:
           echo "Resource Group Exists."
         fi
       displayName: 'Check Resource Group Existence'
+
+    - script: |
+        pwd
+      displayName: 'Deploy Resource from ARM Templates'
+
+
+
