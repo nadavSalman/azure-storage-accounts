@@ -10,33 +10,12 @@ pool:
   name: Default
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - task: SSH@0
   inputs:
     sshEndpoint: 'DeploymentServer'
     runOptions: 'inline'
-    inline: 'python3 -V'
+    inline: |
+      cd /home/nadav/azure-storage-accounts/blobStorageClient
+      ./provision-blobs.sh 
     readyTimeout: '20000'
-  displayName: 'python3 version'
-
-
-
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'DeploymentServer'
-    runOptions: 'git clone https://github.com/nadavSalman/azure-storage-accounts.git'
-    inline: 'clone '
-    readyTimeout: '20000'
-  displayName: 'Clone nadavSalman/azure-storage-accounts'
-
-
-
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'DeploymentServer'
-    runOptions: 'cd azure-storage-accounts/blobStorageClient && cat provision-blobs.sh'
-    inline: 'clone '
-    readyTimeout: '20000'
-  displayName: 'Clone nadavSalman/azure-storage-accounts'
