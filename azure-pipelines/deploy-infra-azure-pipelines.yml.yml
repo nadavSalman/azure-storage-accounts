@@ -21,7 +21,7 @@ jobs:
         if [ $(az group exists --name $(RESOURCEGROUPNAME)) = false ]; then
             echo "Crreating Resource Group."
             az group create \
-              --name NadavHomework \
+              --name $(RESOURCEGROUPNAME) \
               --location "Central US"
         else
           echo "Resource Group Exists."
@@ -36,7 +36,7 @@ jobs:
         cd armTemplatets
         az deployment group create \
         --name DeployInfrastructure \
-        --resource-group NadavHomework \
+        --resource-group $(RESOURCEGROUPNAME) \
         --template-file main.json \
         --parameters parameters.json   \
         --parameters adminPublicKey="$(ADMINPUBLICKEY)"
