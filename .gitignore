@@ -11,3 +11,7 @@ linix-vm-keys-gen.sh
 provision-storage-account.sh
 
 
+blobStorageClient/files/*
+
+
+blobStorageClient/conf.env
