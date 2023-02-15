@@ -32,6 +32,18 @@
       "properties": {
         "supportsHttpsTrafficOnly": true
       }
+    },
+    {
+      "name": "maincontainer",
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2018-07-01",
+      "properties": {
+          "publicAccess": "Blob"
+      },
+      "dependsOn": [
+          "[concat('Microsoft.Storage/storageAccounts/', variables('uniqueStorageName'))]"
+      ]
+      
     }
   ]
 }

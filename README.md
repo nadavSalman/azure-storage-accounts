@@ -4,6 +4,9 @@
 
 
 
+
+
+
 2.        Create an ARM (Azure Resource Manager) template for storage account and create 2 storage accounts
 
 3.        Create an ARM template for a Windows or Linux server
