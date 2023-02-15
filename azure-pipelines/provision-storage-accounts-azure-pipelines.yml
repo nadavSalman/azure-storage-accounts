@@ -16,7 +16,6 @@ steps:
     sshEndpoint: 'DeploymentServer'
     runOptions: 'inline'
     inline: |
-      python -v
-      git clone https://github.com/nadavSalman/azure-storage-accounts.git
-      cd azure-storage-accounts/blobStorageClient && cat provision-blobs.sh
+      cd /home/nadav/azure-storage-accounts/blobStorageClient
+      ./provision-blobs.sh 
     readyTimeout: '20000'
