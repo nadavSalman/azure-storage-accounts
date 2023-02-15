@@ -14,6 +14,10 @@
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]"
+    },
+    "containerName":{
+      "type": "string",
+      "defaultValue": "main"
     }
   },
   "variables": {
@@ -34,7 +38,7 @@
       }
     },
     {
-      "name": "maincontainer",
+      "name": "[concat(variables('uniqueStorageName'),'/default/',parameters('containerName') )]",
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
       "apiVersion": "2018-07-01",
       "properties": {
