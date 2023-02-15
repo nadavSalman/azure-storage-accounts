@@ -26,8 +26,13 @@ class BlobStorageClient:
         blob_client.delete_blob()
 
     def list_container_blobs(self):
-        blob_list = container_client.list_blobs()
+        blob_list = self.container_client.list_blobs()
         for blob in blob_list:
             print("\t" + blob.name)
-
     
+    def get_container_blobs(self):
+        return self.container_client.list_blobs()
+
+    def clean_blobs(self):
+        for blob in self.get_container_blobs():
+            self.delete_blob(blob_name=blob)
