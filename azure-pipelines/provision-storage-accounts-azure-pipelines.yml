@@ -16,7 +16,7 @@ steps:
 - task: SSH@0
   inputs:
     sshEndpoint: 'DeploymentServer'
-    runOptions: 'inline'
+    runOptions: 'script'
     inline: 'python3 -V'
     readyTimeout: '20000'
   displayName: 'python3 version'
@@ -26,8 +26,8 @@ steps:
 - task: SSH@0
   inputs:
     sshEndpoint: 'DeploymentServer'
-    runOptions: 'git clone https://github.com/nadavSalman/azure-storage-accounts.git'
-    inline: 'clone '
+    runOptions: 'script'
+    inline: 'git clone https://github.com/nadavSalman/azure-storage-accounts.git'
     readyTimeout: '20000'
   displayName: 'Clone nadavSalman/azure-storage-accounts'
 
@@ -36,7 +36,7 @@ steps:
 - task: SSH@0
   inputs:
     sshEndpoint: 'DeploymentServer'
-    runOptions: 'cd azure-storage-accounts/blobStorageClient && cat provision-blobs.sh'
-    inline: 'clone '
+    runOptions: 'script'
+    inline: 'cd azure-storage-accounts/blobStorageClient && cat provision-blobs.sh'
     readyTimeout: '20000'
   displayName: 'Clone nadavSalman/azure-storage-accounts'
