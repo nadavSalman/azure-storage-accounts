@@ -3,8 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+# trigger:
+# - main
 
 pool:
   name: Default
@@ -19,6 +19,8 @@ steps:
     export ACCOUNT_B=`az storage account list --resource-group NadavHomework --query '[*].name' | yq .[1]`
     export KEY_ACCOUNT_A=`az storage account keys list --account-name $ACCOUNT_A  | yq .[0].value`
     export KEY_ACCOUNT_B=`az storage account keys list --account-name $ACCOUNT_B  | yq .[0].value`
+    az storage account keys list --account-name $ACCOUNT_B  | yq .[0].value >> test.txt
+    cat test.txt
     echo "##vso[task.setvariable variable=ACCOUNT_A;]"
     echo "##vso[task.setvariable variable=ACCOUNT_B;]"
     echo "##vso[task.setvariable variable=KEY_ACCOUNT_A;]"
