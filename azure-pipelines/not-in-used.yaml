@@ -1,0 +1,30 @@
+- script: |
+    export ACCOUNT_A=`az storage account list --resource-group NadavHomework --query '[*].name' | yq .[0]`
+    export ACCOUNT_B=`az storage account list --resource-group NadavHomework --query '[*].name' | yq .[1]`
+    export KEY_ACCOUNT_A=`az storage account keys list --account-name $ACCOUNT_A  | yq .[0].value`
+    export KEY_ACCOUNT_B=`az storage account keys list --account-name $ACCOUNT_B  | yq .[0].value`
+    az storage account keys list --account-name $ACCOUNT_B  | yq .[0].value >> test.txt
+    cat test.txt
+    echo "##vso[task.setvariable variable=ACCOUNT_A;]"
+    echo "##vso[task.setvariable variable=ACCOUNT_B;]"
+    echo "##vso[task.setvariable variable=KEY_ACCOUNT_A;]"
+    echo "##vso[task.setvariable variable=KEY_ACCOUNT_B;]"
+  displayName: 'Extract Astorage Account Metadata & Credentials'
+
+- bash: |
+    echo $(ACCOUNT_A)
+    echo $(ACCOUNT_B)
+    echo $(KEY_ACCOUNT_A)
+    echo $(KEY_ACCOUNT_B)
+
+- script: |
+    echo "Account A: $ACCOUNT_A"
+    echo "Account B: $ACCOUNT_B"
+  displayName: 'List accounts names'
+
+- task: SSH@0
+  inputs:
+    sshEndpoint: 'DeploymentServer'
+    runOptions: 'inline'
+    inline: 'python3 -V'
+    readyTimeout: '20000'
